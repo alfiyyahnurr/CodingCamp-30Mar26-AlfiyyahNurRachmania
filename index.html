@@ -8,113 +8,119 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="background-gradient"></div>
-    
     <div class="container">
         <header>
-            <div class="header-content">
-                <div class="logo">
-                    <span class="logo-icon">💰</span>
-                    <h1>SpendWise</h1>
-                </div>
-                <button id="themeToggle" class="theme-toggle">
-                    <span class="toggle-icon">🌙</span>
-                </button>
-            </div>
+            <h1>Expense & Budget Visualizer</h1>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <span class="toggle-icon"></span>
+            </button>
         </header>
 
-        <div class="dashboard-grid">
-            <div class="balance-section">
-                <div class="balance-card glass-effect">
-                    <div class="balance-icon">💵</div>
-                    <p class="balance-label">Total Spending</p>
-                    <h2 class="balance-amount" id="totalBalance">$0.00</h2>
-                    <div class="balance-bar">
-                        <div class="balance-progress" id="balanceProgress"></div>
-                    </div>
-                    <p class="balance-limit">Limit: $1,000.00</p>
-                </div>
+        <div class="balance-card">
+            <p class="balance-label">TOTAL BALANCE</p>
+            <h2 class="balance-amount" id="totalBalance">$0.00</h2>
+            <div class="balance-info">
+                <span>Limit: <span id="spendingLimit">$1,000.00</span></span>
+                <button id="editLimitBtn" class="btn-link">Edit</button>
             </div>
+            <div class="balance-bar">
+                <div class="balance-progress" id="balanceProgress"></div>
+            </div>
+        </div>
 
-            <div class="form-section">
-                <div class="form-card glass-effect">
-                    <div class="form-header">
-                        <span class="form-icon">➕</span>
-                        <h3>New Expense</h3>
-                    </div>
+        <div class="main-content">
+            <div class="left-section">
+                <div class="card">
+                    <h3>Add Transaction</h3>
                     <form id="transactionForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="itemName">
-                                    <span class="label-icon">📝</span>
-                                    Item Name
-                                </label>
-                                <input type="text" id="itemName" placeholder="e.g., Coffee, Taxi, Movie" required>
-                            </div>
+                        <div class="form-group">
+                            <label for="itemName">Item Name</label>
+                            <input type="text" id="itemName" placeholder="Enter item name" required>
                         </div>
-                        <div class="form-row-split">
-                            <div class="form-group">
-                                <label for="amount">
-                                    <span class="label-icon">💲</span>
-                                    Amount
-                                </label>
-                                <input type="number" id="amount" step="0.01" placeholder="0.00" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="category">
-                                    <span class="label-icon">🏷️</span>
-                                    Category
-                                </label>
-                                <select id="category" required>
-                                    <option value="">Choose...</option>
-                                    <option value="Food">🍔 Food</option>
-                                    <option value="Transport">🚗 Transport</option>
-                                    <option value="Fun">🎉 Fun</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" id="amount" step="0.01" placeholder="0.00" required>
                         </div>
-                        <button type="submit" class="btn-primary">
-                            <span>Add Expense</span>
-                            <span class="btn-arrow">→</span>
-                        </button>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="">Select category</option>
+                                <option value="Food">Food</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Fun">Fun</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Add Transaction</button>
                     </form>
+                    <button id="manageCategoriesBtn" class="btn-secondary">Manage Categories</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Transactions</h3>
+                        <select id="sortBy" class="sort-select">
+                            <option value="date">Latest</option>
+                            <option value="amount-high">Highest Amount</option>
+                            <option value="amount-low">Lowest Amount</option>
+                            <option value="category">Category</option>
+                        </select>
+                    </div>
+                    <div class="transactions-list" id="transactionsList">
+                        <div class="empty-state">
+                            <p>No transactions yet</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="chart-section">
-                <div class="chart-card glass-effect">
-                    <div class="chart-header">
-                        <span class="chart-icon">📊</span>
-                        <h3>Spending Overview</h3>
+            <div class="right-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Spending by Category</h3>
+                        <button id="viewSummaryBtn" class="btn-link">Monthly Summary</button>
                     </div>
                     <div class="chart-container">
                         <canvas id="spendingChart"></canvas>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="transactions-section">
-                <div class="transactions-card glass-effect">
-                    <div class="transactions-header">
-                        <div class="header-left">
-                            <span class="transactions-icon">📋</span>
-                            <h3>Recent Activity</h3>
-                        </div>
-                        <select id="sortBy" class="sort-select">
-                            <option value="date">📅 Latest</option>
-                            <option value="amount-high">💰 Highest</option>
-                            <option value="amount-low">💵 Lowest</option>
-                            <option value="category">🏷️ Category</option>
-                        </select>
-                    </div>
-                    <div class="transactions-list" id="transactionsList">
-                        <div class="empty-state">
-                            <div class="empty-icon">📭</div>
-                            <p>No expenses yet</p>
-                            <span>Start tracking your spending!</span>
-                        </div>
-                    </div>
+    <!-- Modal for Category Management -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Manage Categories</h3>
+                <button class="modal-close" id="closeCategoryModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="category-list" id="categoryList"></div>
+                <div class="add-category-form">
+                    <input type="text" id="newCategoryName" placeholder="New category name" />
+                    <button id="addCategoryBtn" class="btn-primary">Add</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Monthly Summary -->
+    <div id="summaryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Monthly Summary</h3>
+                <button class="modal-close" id="closeSummaryModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="summary-controls">
+                    <select id="summaryMonth" class="summary-select"></select>
+                    <select id="summaryYear" class="summary-select"></select>
+                </div>
+                <div id="summaryContent" class="summary-content"></div>
             </div>
         </div>
     </div>

@@ -1,205 +1,173 @@
-# 💰 SpendWise - Expense & Budget Visualizer
+# 💰 Expense & Budget Visualizer
 
-A modern, mobile-friendly web application for tracking daily expenses with visual insights. Built with vanilla JavaScript, HTML, and CSS.
-
-![SpendWise Preview](https://img.shields.io/badge/Status-Active-success)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+A modern, feature-rich expense tracker web application built with vanilla JavaScript, HTML, and CSS. Track your spending, manage custom categories, and visualize your expenses with beautiful charts.
 
 ## ✨ Features
 
-### Core Features (MVP)
-- ✅ **Input Form** - Add expenses with item name, amount, and category
-- ✅ **Form Validation** - Ensures all fields are filled before submission
-- ✅ **Transaction List** - Scrollable list of all expenses with delete functionality
-- ✅ **Total Balance** - Real-time calculation of total spending
-- ✅ **Visual Chart** - Interactive doughnut chart showing spending distribution by category
-- ✅ **Auto-Update** - All components update automatically when data changes
+### Core Features
+- ✅ **Add Transactions** - Record expenses with name, amount, category, and date
+- ✅ **Delete Transactions** - Remove incorrect or unwanted transactions
+- ✅ **Real-time Balance** - See your total spending update instantly
+- ✅ **Visual Progress Bar** - Track spending against your limit
+- ✅ **Spending Limit Alert** - Get visual warnings when exceeding your budget
+- ✅ **Data Persistence** - All data saved in browser localStorage
 
-### Optional Features (3/5 Implemented)
-- 🎯 **Sort Transactions** - Sort by date, amount (high/low), or category
-- ⚠️ **Spending Limit Alert** - Visual warning when spending exceeds $1,000
-- 🌓 **Dark/Light Mode** - Toggle between two beautiful themes
-
-## 🎨 Design Highlights
-
-- **Glassmorphism UI** - Modern glass effect with backdrop blur
-- **Gradient Backgrounds** - Beautiful blue gradient (dark mode) and sky blue (light mode)
-- **Smooth Animations** - Floating icons, slide-in effects, and hover transitions
-- **High Contrast** - Optimized for readability and accessibility
-- **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
-- **Icon-Based** - Emoji icons for intuitive user experience
+### Advanced Features
+- 🎨 **Dark/Light Mode Toggle** - Switch between themes for comfortable viewing
+- 📊 **Interactive Chart** - Doughnut chart showing spending by category
+- 🔄 **Sort Transactions** - Sort by date, amount (high/low), or category
+- 📁 **Custom Categories** - Add, manage, and delete your own expense categories
+- 📅 **Monthly Summary** - View detailed spending reports by month and year
+- 💵 **Editable Spending Limit** - Set and adjust your budget limit anytime
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Modern web browser (Chrome, Firefox, Edge, Safari)
-- No installation or setup required!
+- Modern web browser (Chrome, Firefox, Safari, or Edge)
+- JavaScript enabled
+- No installation required!
 
-### Installation
+### Usage
+1. Open `index.html` in your web browser
+2. Start adding transactions using the form
+3. Manage categories via the "Manage Categories" button
+4. View monthly summaries with the "Monthly Summary" button
+5. Toggle dark/light mode using the theme button in the header
+6. Edit your spending limit by clicking the "Edit" button
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/spendwise.git
-```
+## 📱 Features in Detail
 
-2. Navigate to the project folder:
-```bash
-cd spendwise
-```
+### Transaction Management
+- **Add Transaction**: Fill in item name, amount, category, and date
+- **Sort Options**:
+  - Latest (default)
+  - Highest Amount
+  - Lowest Amount
+  - Category (alphabetical)
+- **Delete**: Remove any transaction with one click
 
-3. Open `index.html` in your browser:
-```bash
-# On Windows
-start index.html
+### Category Management
+- **Default Categories**: Food, Transport, Fun
+- **Add Custom Categories**: Create categories that fit your lifestyle
+- **Delete Categories**: Remove unused categories (with transaction warning)
+- **Visual Identification**: Clean category labels
 
-# On Mac
-open index.html
+### Monthly Summary
+- **Total Spending**: See your monthly total
+- **Transaction Count**: Number of transactions in the month
+- **Average per Transaction**: Calculate spending patterns
+- **Category Breakdown**: Detailed spending by category with percentages
+- **Date Selection**: Choose any month and year to review
 
-# On Linux
-xdg-open index.html
-```
+### Spending Limit
+- **Default Limit**: $1,000 (customizable)
+- **Visual Indicators**:
+  - Progress bar shows percentage of limit used
+  - Color gradient (green → yellow → red)
+  - Red highlight when over limit
+- **Edit Anytime**: Click "Edit" to set a new limit
 
-That's it! The app runs entirely in your browser.
-
-## 📁 Project Structure
-
-```
-spendwise/
-├── index.html          # Main HTML file
-├── css/
-│   └── style.css      # All styles in one file
-├── js/
-│   └── app.js         # All JavaScript logic
-└── README.md          # Project documentation
-```
-
-## 🛠️ Technologies Used
-
-- **HTML5** - Semantic markup structure
-- **CSS3** - Modern styling with glassmorphism, gradients, and animations
-- **Vanilla JavaScript** - No frameworks, pure ES6+
-- **Chart.js** - Beautiful and responsive charts
-- **LocalStorage API** - Client-side data persistence
+### Theme Toggle
+- **Light Mode**: Clean, bright interface
+- **Dark Mode**: Easy on the eyes for low-light environments
+- **Persistent**: Your theme choice is saved
+- **Chart Updates**: Chart colors adapt to theme
 
 ## 💾 Data Storage
 
-All expense data is stored locally in your browser using the LocalStorage API. This means:
-- ✅ No server required
-- ✅ Data persists between sessions
-- ✅ Complete privacy - your data never leaves your device
-- ⚠️ Data is browser-specific (clearing browser data will delete expenses)
+All data is stored locally in your browser using localStorage:
+- `expenseTrackerData` - Your transactions
+- `expenseTrackerCategories` - Custom categories
+- `expenseTrackerLimit` - Your spending limit
+- `expenseTrackerTheme` - Theme preference
 
-## 🎯 How to Use
+**Note**: Data persists across browser sessions but is device-specific.
 
-1. **Add an Expense**
-   - Enter the item name (e.g., "Coffee", "Taxi")
-   - Enter the amount (e.g., 14.50)
-   - Select a category (Food, Transport, or Fun)
-   - Click "Add Expense"
+## 🎨 Technologies Used
 
-2. **View Your Spending**
-   - See total spending at the top
-   - Progress bar shows spending relative to $1,000 limit
-   - Chart displays category breakdown
+- **HTML5** - Structure and semantics
+- **CSS3** - Styling with CSS variables for theming
+- **Vanilla JavaScript** - No frameworks, pure JS
+- **Chart.js** - Beautiful doughnut charts
+- **LocalStorage API** - Client-side data persistence
 
-3. **Manage Transactions**
-   - Sort transactions using the dropdown menu
-   - Delete individual transactions with the "Delete" button
-   - Watch the chart update in real-time
+## 📊 Chart Visualization
 
-4. **Toggle Theme**
-   - Click the moon/sun icon to switch between dark and light modes
-   - Your preference is saved automatically
+The spending chart provides:
+- Doughnut chart with category breakdown
+- Color-coded categories (up to 9 unique colors)
+- Hover tooltips showing amount and percentage
+- Responsive design that adapts to screen size
+- Theme-aware colors
 
-## 📊 Categories
+## 🎯 Use Cases
 
-The app includes three default categories:
-- 🍔 **Food** - Meals, groceries, snacks
-- 🚗 **Transport** - Taxi, gas, public transport
-- 🎉 **Fun** - Entertainment, hobbies, leisure
-
-## 🌐 Browser Compatibility
-
-| Browser | Supported |
-|---------|-----------|
-| Chrome  | ✅ Yes    |
-| Firefox | ✅ Yes    |
-| Edge    | ✅ Yes    |
-| Safari  | ✅ Yes    |
-| Opera   | ✅ Yes    |
-
-Requires modern browser with ES6+ support and LocalStorage API.
-
-## 📱 Mobile Support
-
-SpendWise is fully responsive and optimized for mobile devices:
-- Touch-friendly buttons and inputs
-- Adaptive layout for small screens
-- Smooth scrolling for transaction list
-- Mobile-first design approach
-
-## 🚀 Deployment
-
-### GitHub Pages
-
-1. Push your code to GitHub
-2. Go to repository Settings
-3. Navigate to Pages section
-4. Select main branch as source
-5. Click Save
-6. Your site will be live at `https://yourusername.github.io/spendwise`
-
-### Other Options
-- **Netlify** - Drag and drop deployment
-- **Vercel** - Connect GitHub repository
-- **Local Server** - Use any HTTP server (e.g., `python -m http.server`)
+Perfect for:
+- Personal expense tracking
+- Budget management
+- Spending pattern analysis
+- Monthly financial reviews
+- Category-based expense monitoring
 
 ## 🔒 Privacy & Security
 
-- No data is sent to any server
-- No tracking or analytics
-- No cookies used
-- All data stored locally in your browser
-- Open source - inspect the code yourself
+- ✅ No data sent to servers
+- ✅ No tracking or analytics
+- ✅ No cookies
+- ✅ All data stays in your browser
+- ✅ No account or login required
 
-## 🎓 Learning Outcomes
+## 📱 Responsive Design
+
+Fully responsive interface that works on:
+- 📱 Mobile phones
+- 📱 Tablets
+- 💻 Laptops
+- 🖥️ Desktop computers
+
+## 🎓 Learning Resources
 
 This project demonstrates:
-- DOM manipulation and event handling
-- LocalStorage API usage
+- DOM manipulation
+- Event handling
+- LocalStorage usage
 - Chart.js integration
-- Responsive CSS design
-- Modern UI/UX patterns (glassmorphism)
+- CSS theming with variables
+- Responsive design patterns
+- Modal dialogs
 - Form validation
-- Array methods and data manipulation
-- CSS animations and transitions
+
+## 🐛 Known Limitations
+
+- Data is device-specific (no cloud sync)
+- No export/import functionality
+- No transaction editing (delete and re-add)
+- No recurring expense tracking
+- No multi-currency support
+
+## 🔮 Future Enhancements
+
+Potential features for future versions:
+- Transaction editing
+- Export to CSV/PDF
+- Budget planning tools
+- Recurring expenses
+- Income tracking
+- Multi-device sync
+- Mobile app version
+
+## 📄 License
+
+This project is open source and available for personal and educational use.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest new features
-- Submit pull requests
-- Improve documentation
+Feel free to fork, modify, and enhance this project for your own needs!
 
-## 📝 License
+## 📞 Support
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## 👨‍💻 Author
-
-Created with ❤️ by [Your Name]
-
-## 🙏 Acknowledgments
-
-- Chart.js for the beautiful charts
-- Inspiration from modern expense tracking apps
-- Community feedback and suggestions
+For issues or questions, please refer to the code comments or create an issue in the repository.
 
 ---
 
-**Happy Tracking! 💰✨**
-
-If you find this project helpful, please give it a ⭐ on GitHub!
+**Made with ❤️ using Vanilla JavaScript**
